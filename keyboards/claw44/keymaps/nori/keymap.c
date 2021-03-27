@@ -19,7 +19,7 @@ enum layer_number {
 #define KC_R_ENT LT(_RAISE, KC_ENT)
 #define KC_SH13 SFT_T(KC_F13)
 #define KC_SH14 SFT_T(KC_F14)
-#define KC_G_15 LGUI_T(KC_F15)
+#define KC_G_15 GUI_T(KC_F15)
 #define KC_AR_16 LT(_ARROW, KC_F16)
 #define KC_R_BS LT(_RAISE,KC_BSPC)
 #define KC_L_BS LT(_LOWER,KC_BSPC)
@@ -31,6 +31,7 @@ enum layer_number {
 #define KC_L_SPC LT(_LOWER, KC_SPC)
 #define KC_L_ET LT(_LOWER, KC_ENT)
 #define KC_R_ET LT(_RAISE, KC_ENT)
+#define KC_G_SPC GUI_T(KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
        KC_SH13, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , KC_M    , KC_COMM, KC_DOT  , KC_SLSH, KC_SH14,
     //`--------+--------+---------+--------+---------+--------/   \--------+---------+--------+---------+--------+--------'
-                         KC_A_CPS, KC_A_15, KC_R_SPC, KC_BSPC,     KC_L_ET, KC_R_SPC, KC_AR_16, KC_AR_DE
+                         KC_A_CPS, KC_A_15, KC_G_SPC, KC_BSPC,     KC_L_ET, KC_R_SPC, KC_AR_16, KC_AR_DE
     //                 `----------+--------+---------+--------'   `--------+---------+--------+---------'
     ),
 
