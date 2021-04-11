@@ -26,6 +26,7 @@ enum layer_number {
 #define KC_A_15 ALT_T(KC_F15)
 #define KC_A_CPS ALT_T(KC_CAPS)
 #define KC_AR_DE LT(_ARROW, KC_DEL)
+#define KC_AR_BS LT(_ARROW, KC_BSPC)
 #define KC_C_TB LCTL_T(KC_TAB)
 #define KC_R_SPC LT(_RAISE, KC_SPC)
 #define KC_L_SPC LT(_LOWER, KC_SPC)
@@ -42,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
        KC_SH13, KC_Z   , KC_X    , KC_C   , KC_V    , KC_B   ,     KC_N   , KC_M    , KC_COMM, KC_DOT  , KC_SLSH, KC_SH14,
     //`--------+--------+---------+--------+---------+--------/   \--------+---------+--------+---------+--------+--------'
-                         KC_A_CPS, KC_A_CPS,KC_G_SPC, KC_BSPC,     KC_L_ET, KC_R_SPC, KC_AR_DE,KC_AR_DE
+                         KC_A_CPS, KC_A_CPS,KC_G_SPC,KC_AR_BS,     KC_L_ET, KC_R_SPC, KC_AR_DE,KC_AR_DE
     //                 `----------+--------+---------+--------'   `--------+---------+--------+---------'
     ),
 
@@ -72,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ARROW] = LAYOUT( \
     //,--------+--------+--------+--------+--------+--------.   ,--------+--------+--------+--------+--------+--------.
-       _______, _______, _______, KC_UP  , _______, _______,     KC_PGUP, _______, KC_UP  , _______, KC_HOME, _______,
+       _______, KC_PGUP, _______, KC_UP  , _______, KC_HOME,     KC_PGUP, _______, KC_UP  , _______, KC_HOME, _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
-       _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
+       _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_END,     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  _______,
     //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------|
        _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______,
     //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
