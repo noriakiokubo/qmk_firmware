@@ -10,7 +10,8 @@ enum layer_number {
     _QWERTY = 0,
     _RAISE,
     _LOWER,
-    _ARROW
+    _ARROW,
+    _MOUSE
 };
 
 #define KC_ KC_TRNS
@@ -33,11 +34,12 @@ enum layer_number {
 #define KC_L_ET LT(_LOWER, KC_ENT)
 #define KC_R_ET LT(_RAISE, KC_ENT)
 #define KC_G_SPC GUI_T(KC_SPC)
+#define KC_M_ESC LT(_MOUSE, KC_ESC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
     //,--------+--------+---------+--------+---------+--------.   ,--------+---------+--------+---------+--------+--------.
-       KC_ESC , KC_Q   , KC_W    , KC_E   , KC_R    , KC_T   ,     KC_Y   , KC_U    , KC_I   , KC_O    , KC_P   , KC_MINS,
+       KC_M_ESC, KC_Q   , KC_W    , KC_E   , KC_R    , KC_T   ,     KC_Y   , KC_U    , KC_I   , KC_O    , KC_P   , KC_MINS,
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
        KC_C_TB, KC_A   , KC_S    , KC_D   , KC_F    , KC_G   ,     KC_H   , KC_J    , KC_K   , KC_L    , KC_SCLN, KC_QUOT,
     //|--------+--------+---------+--------+---------+--------|   |--------+---------+--------+---------+--------+--------|
@@ -82,6 +84,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                          RESET,   _______, _______, _______,     _______, _______, _______, _______
     //                  `--------+--------+--------+--------'   `--------+--------+--------+--------'
     ),
+
+    [_MOUSE] = LAYOUT( \
+    //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+        _______, _______, _______, _______, _______, _______,                      _______, _______, KC_MS_U, _______, KC_WH_D, _______,
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+        _______, _______, _______, _______, KC_BTN1, KC_BTN2,                      _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, KC_WH_L,
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+        _______, _______, _______, _______, _______, KC_BTN3,                      _______, _______, _______, KC_WH_R, _______, _______,
+    //`--------+--------+--------+--------+--------+--------/   \--------+--------+--------+--------+--------+--------'
+                          RESET,   _______, _______, _______,     _______, _______, _______, _______
+    //                  `--------+--------+--------+--------'   `--------+--------+--------+--------'
+    )
 };
 
 #ifdef OLED_DRIVER_ENABLE
@@ -96,6 +110,12 @@ void render_layer_state(void) {
             break;
         case _LOWER:
             oled_write_ln_P(PSTR("Layer: Lower"), false);
+            break;
+        case _ARROW:
+            oled_write_ln_P(PSTR("Layer: Arrow"), false);
+            break;
+        case _MOUSE:
+            oled_write_ln_P(PSTR("Layer: Mouse"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Layer: Undefined"), false);
